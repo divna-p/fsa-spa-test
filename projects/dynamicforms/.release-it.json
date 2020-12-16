@@ -14,11 +14,8 @@
   },
   "github": {
     "release": true,
-    "assets": [
-      "../../docs.tar.gz",
-      "../../docs.zip"
-    ],
-    "releaseName": "@spartacus/dynamicforms@${version}",
+    "assets": ["../../docs.tar.gz", "../../docs.zip"],
+    "releaseName": "@test/dynamicforms@${version}",
     "releaseNotes": "ts-node ../../scripts/changelog.ts --verbose --lib dynamicforms --to dynamicforms-${version}"
   }
 }

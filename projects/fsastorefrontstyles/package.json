@@ -1,11 +1,11 @@
 {
-  "name": "@spartacus/fsastorefrontstyles",
-  "version": "0.0.1-beta.1",
+  "name": "@test/fsa-storefrontstyles",
+  "version": "0.0.1-beta.0",
   "author": "FSA",
   "description": "FSA Style library containing global styles",
   "homepage": "https://github.com/SAP/spartacus",
   "keywords": [
-    "spartacus",
+    "test",
     "fsa",
     "styles"
   ],

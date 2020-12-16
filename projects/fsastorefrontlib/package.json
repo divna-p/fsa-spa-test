@@ -1,7 +1,7 @@
 {
-  "name": "@fsa/fsastorefront",
+  "name": "@test/fsa-storefront",
   "description": "Financial Services Accelerator Spartacus Storefront",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.0",
   "author": "FSA",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -9,7 +9,7 @@
   },
   "keywords": [
     "fsa",
-    "spartacus",
+    "test",
     "storefront"
   ],
   "peerDependencies": {

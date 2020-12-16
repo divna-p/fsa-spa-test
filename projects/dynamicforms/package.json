@@ -1,7 +1,7 @@
 {
-  "name": "@spartacus/dynamicforms",
+  "name": "@test/dynamicforms",
   "description": "Library for creating dynamic forms, designed to work with Spartacus application",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.0",
   "author": "FSA",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -10,7 +10,7 @@
   "keywords": [
     "fsa",
     "dynamicforms",
-    "spartacus"
+    "test"
   ],
   "peerDependencies": {
     "@angular/common": "^9.0.0",

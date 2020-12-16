@@ -1,10 +1,10 @@
 {
-  "name": "@spartacus/fsa-schematics",
-  "version": "0.0.1-beta-test",
+  "name": "@test/fsa-schematics",
+  "version": "0.0.1-beta.0",
   "description": "FSA schematics",
   "keywords": [
     "fsa",
-    "spartacus",
+    "test",
     "schematics"
   ],
   "scripts": {
