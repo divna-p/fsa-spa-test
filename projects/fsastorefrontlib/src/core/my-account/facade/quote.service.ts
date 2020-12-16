@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormDataService, FormDataStorageService } from '@fsa/dynamicforms';
+import { FormDataService, FormDataStorageService } from 'test-dynamicforms';
 import { select, Store } from '@ngrx/store';
 import { AuthService, OrderEntry } from '@spartacus/core';
 import { filter, map, take } from 'rxjs/operators';

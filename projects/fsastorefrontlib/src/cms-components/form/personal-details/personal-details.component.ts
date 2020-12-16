@@ -10,7 +10,7 @@ import {
   FormDataService,
   FormDataStorageService,
   YFormCmsComponent,
-} from '@fsa/dynamicforms';
+} from 'test-dynamicforms';
 import { CmsComponentData } from '@spartacus/storefront';
 import {
   FSProduct,

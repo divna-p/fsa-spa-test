@@ -13,7 +13,7 @@ import {
   FormDataService,
   FormDataStorageService,
   FormService,
-} from '@fsa/dynamicforms';
+} from 'test-dynamicforms';
 import { LanguageService, Product } from '@spartacus/core';
 import { CurrentProductService } from '@spartacus/storefront';
 import { of } from 'rxjs';

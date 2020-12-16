@@ -4,7 +4,7 @@ import {
   FormCMSComponent,
   FormDataService,
   FormDataStorageService,
-} from '@fsa/dynamicforms';
+} from 'test-dynamicforms';
 import { CmsComponentConnector, PageContext, PageType } from '@spartacus/core';
 import { CmsComponentData } from '@spartacus/storefront';
 import { map } from 'rxjs/operators';
