@@ -1,0 +1,44 @@
+@import '../../theme/fs/variables';
+
+%cx-fs-agent-root {
+  cx-media img {
+    background: var(--cx-color-7);
+    border-radius: 50%;
+    @include box-shadow(0px, 3px, 10px, 1px, $color-dark-grey, 0.3);
+  }
+  .accordion-item {
+    .agent-container {
+      background: var(--cx-color-1);
+      @include box-shadow(0px, 3px, 10px, 1px, $color-dark-grey, 0.3);
+      p {
+        font-weight: var(--cx-font-weight-semi);
+      }
+      .fs-icon {
+        left: 0;
+        &:before {
+          padding: 8px;
+          border: 1px solid var(--cx-color-3);
+          border-radius: 50%;
+          font-size: var(--cx-h3-font-size);
+          left: 0;
+          @include transition;
+        }
+      }
+      .icon-envelope {
+        &:before {
+          color: var(--cx-color-secondary);
+        }
+        &:hover:before {
+          color: var(--cx-color-1);
+          background: var(--cx-color-text);
+          border: 1px solid var(--cx-color-text);
+        }
+      }
+      .icon-map-marker:hover:before {
+        color: var(--cx-color-1);
+        background: var(--cx-color-primary);
+        border: 1px solid var(--cx-color-primary);
+      }
+    }
+  }
+}

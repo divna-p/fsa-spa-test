@@ -1,0 +1,135 @@
+<ng-container *ngIf="searchResults$ | async as results">
+  <div class="mt-5">
+    <div class="row">
+      <ng-container *ngIf="results.pagination.totalCount > 0">
+        <div class="col-lg-6 col-12 mb-5 text-center">
+          <cx-pagination
+            *ngIf="pagination"
+            [pagination]="pagination"
+            (viewPageEvent)="pageChange($event)"
+          >
+          </cx-pagination>
+        </div>
+        <div
+          class="col-lg-6 col-12 mb-5 d-flex justify-content-center align-items-center semi-bold"
+        >
+          {{ 'fscommon.totalResults' | cxTranslate }} :
+          {{ pagination.totalResults }}
+        </div>
+      </ng-container>
+      <ng-container *ngIf="selectedIndex > -1">
+        <div class="col-12 mb-5 d-lg-none">
+          <button
+            class="action-button btn-block"
+            (click)="setActiveAgentIndex(-1)"
+          >
+            {{ 'common.back' | cxTranslate }}
+          </button>
+        </div>
+      </ng-container>
+      <div class="col-lg-6 col-12 mb-5">
+        <div class="agent-list">
+          <ng-container *ngFor="let agent of results.agents; let i = index">
+            <div
+              class="row no-gutters agent-list-item py-3 px-4 border-bottom border-color-3"
+              [ngClass]="{
+                active: selectedIndex === i,
+                'd-flex': selectedIndex === -1
+              }"
+            >
+              <div class="col-12 col-sm-3 position-relative text-center mb-3">
+                <div class="counter text-center semi-bold position-absolute">
+                  {{ i + 1 }}
+                </div>
+                <cx-media
+                  class="cx-product-image-container px-4"
+                  [container]="agent.thumbnail"
+                  format="thumbnail"
+                >
+                </cx-media>
+              </div>
+              <div class="col-12 col-sm-9">
+                <h5
+                  class="agent-name text-uppercase notice"
+                  (click)="showDetails(agent); setActiveAgentIndex(i)"
+                >
+                  {{ agent.displayName }}
+                </h5>
+                <div class="border-bottom border-color-3 my-3">
+                  <ng-container *ngIf="agent.pointsOfService">
+                    <ng-container *ngFor="let pos of agent.pointsOfService">
+                      <div class="row no-gutters mb-2">
+                        <div class="col-9 semi-bold">
+                          {{ pos.displayName }} {{ pos.address?.line1 }},
+                          {{ agent.pointsOfService[0]?.address?.town }}
+                        </div>
+                        <div class="col-3 semi-bold notice text-right">
+                          {{ pos.formattedDistance }}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </div>
+                <div class="mb-3">
+                  <ng-container
+                    *ngFor="let category of agent.categories; let i = index"
+                  >
+                    {{ category.name }}
+                    <ng-container *ngIf="i + 1 !== agent.categories.length">
+                      ,
+                    </ng-container>
+                  </ng-container>
+                </div>
+                <button
+                  class="action-button btn-block"
+                  [routerLink]="
+                    {
+                      cxRoute: 'contactAgent',
+                      params: { agent: agent.email }
+                    } | cxUrl
+                  "
+                >
+                  {{ 'fscommon.agentLocator.contact' | cxTranslate }}
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div
+        class="col-lg-6 col-12 mb-5"
+        *ngIf="selectedAgent$ | async as selectedAgent"
+      >
+        <ng-container
+          *ngTemplateOutlet="
+            agentMap;
+            context: {
+              agent: selectedAgent
+            }
+          "
+        >
+        </ng-container>
+      </div>
+      <div
+        class="col-lg-6 col-12 mb-5"
+        *ngIf="!selectedAgent$ && results && results.agents[0]"
+      >
+        <ng-container
+          *ngTemplateOutlet="
+            agentMap;
+            context: {
+              agent: results.agents[0]
+            }
+          "
+        >
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #agentMap let-agent="agent">
+  <cx-store-finder-map
+    [locations]="agent.pointsOfService"
+  ></cx-store-finder-map>
+</ng-template>

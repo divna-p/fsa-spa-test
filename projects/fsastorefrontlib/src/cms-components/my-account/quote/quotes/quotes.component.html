@@ -1,0 +1,90 @@
+<h2 class="heading-headline py-3 mt-3 mb-5 text-center">
+  {{ 'fscommon.quotesAndApplications' | cxTranslate }}
+</h2>
+<ng-container *ngIf="quotes$ | async as quotes">
+  <ng-container *ngIf="quotesLoaded$ | async; else loading">
+    <div class="row" *ngIf="quotes.length > 0; else noQuotes">
+      <div *ngFor="let quote of quotes" class="col-12 col-md-6 d-flex">
+        <div class="info-card">
+          <h6 class="title background-color-4">
+            {{ quote.defaultCategory?.name }}
+          </h6>
+          <div class="info-card-wrapper">
+            <div class="info-card-content">
+              <div class="info-card-details">
+                <div class="info-card-data">
+                  <span class="label">{{ quote.planName }}</span
+                  >:
+                  <span class="value">{{ quote.quoteId }}</span>
+                </div>
+                <ng-container *ngIf="quote.quoteWorkflowStatus">
+                  <div class="info-card-data">
+                    <span class="label">{{
+                      'quote.quoteWorkflowStatus.title' | cxTranslate
+                    }}</span
+                    >:
+                    <span class="value">
+                      {{
+                        'quote.quoteWorkflowStatus.' +
+                          quote.quoteWorkflowStatus.code | cxTranslate
+                      }}
+                    </span>
+                  </div>
+                </ng-container>
+                <div class="info-card-data">
+                  <span class="label">{{
+                    'fscommon.expiryDate' | cxTranslate
+                  }}</span
+                  >:
+                  <span *ngIf="quote.expiryDate" class="value">{{
+                    quote.expiryDate | cxDate: 'dd MMM yyyy'
+                  }}</span>
+                  <span *ngIf="!quote.expiryDate" class="value">{{
+                    'fscommon.expiryNotConfirmed' | cxTranslate
+                  }}</span>
+                </div>
+                <div class="info-card-data">
+                  <span class="label">{{ 'fscommon.price' | cxTranslate }}</span
+                  >:
+                  <span class="value"
+                    >{{ quote.quotePrice }}
+                    <ng-container *ngIf="quote.paymentFrequency">
+                      / {{ quote.paymentFrequency }}</ng-container
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="info-card-image">
+                <span class="image-wrapper">
+                  <img
+                    class="image-item"
+                    [src]="getBaseUrl() + quote.defaultCategory.image?.url"
+                    alt=""
+                  />
+                </span>
+              </div>
+            </div>
+            <ng-container
+              *ngIf="
+                !quote.isExpired &&
+                quote.quoteWorkflowStatus.code !== 'REFERRED'
+              "
+            >
+              <div class="info-card-links">
+                <a class="link" (click)="retrieveQuote(quote)">
+                  {{ 'fscommon.retrieve' | cxTranslate }}
+                </a>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+<ng-template #noQuotes>
+  <h3>{{ 'quote.youHaveNoQuotes' | cxTranslate }}!</h3>
+</ng-template>
+<ng-template #loading>
+  <cx-spinner></cx-spinner>
+</ng-template>
