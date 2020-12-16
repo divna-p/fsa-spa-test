@@ -1,7 +1,7 @@
 /***** Imports start *****/
-export const FSA_STOREFRONT = 'test-d/fsa-storefront';
-export const FSA_STOREFRONT_STYLES = 'test-d/fsa-storefrontstyles';
-export const FSA_DYNAMIC_FORMS = 'test-d/dynamicforms';
+export const FSA_STOREFRONT = 'test-fsa-storefront';
+export const FSA_STOREFRONT_STYLES = 'test-fsa-storefrontstyles';
+export const FSA_DYNAMIC_FORMS = 'test-dynamicforms';
 /***** Imports end *****/
 
 /***** Classes start *****/
