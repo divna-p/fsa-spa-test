@@ -15,6 +15,6 @@
   "github": {
     "release": true,
     "assets": ["../../docs.tar.gz", "../../docs.zip"],
-    "releaseName": "@test/fsa-storefront@${version}"
+    "releaseName": "test-d/fsa-storefront@${version}"
   }
 }

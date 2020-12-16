@@ -1,5 +1,5 @@
 {
-  "name": "@test/dynamicforms",
+  "name": "test-d/dynamicforms",
   "description": "Library for creating dynamic forms, designed to work with Spartacus application",
   "version": "0.0.1-beta.0",
   "author": "FSA",
